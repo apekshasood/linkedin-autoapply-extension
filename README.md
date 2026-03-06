@@ -1,0 +1,1 @@
+# linkedin-autoapply-extension
