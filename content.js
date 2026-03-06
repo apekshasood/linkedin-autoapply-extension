@@ -1,12 +1,25 @@
-(async function () {
-  let user;
+console.log('LinkedIn Auto Apply content script loaded');
 
+let userData;
+
+async function initUserData() {
+  if (userData) return userData;
   try {
     const response = await fetch(chrome.runtime.getURL("userData.json"));
-    user = await response.json();
+    userData = await response.json();
+    return userData;
   } catch (err) {
     console.error('Could not load userData.json', err);
-    return; // bail out if user data isn't available
+    throw err;
+  }
+}
+
+async function startAutoApply() {
+  let user;
+  try {
+    user = await initUserData();
+  } catch (_err) {
+    return;
   }
 
   const fillInputs = () => {
@@ -65,7 +78,7 @@
     setTimeout(clickNext, 1500);
   }, 2000);
 
-  // resume upload helper inside same scope
+  // resume upload helper
   const uploadResume = async () => {
     try {
       const fileInput = document.querySelector('input[type="file"]');
@@ -86,4 +99,16 @@
   };
 
   setTimeout(uploadResume, 3000);
-})();
+}
+
+// automatically run when script loads
+startAutoApply().catch(() => {});
+
+// listen for messages from popup or background
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.action === 'startAutoApply') {
+    console.log('received startAutoApply message');
+    startAutoApply().then(() => sendResponse({status: 'started'}));
+    return true; // indicate we will respond asynchronously
+  }
+});
