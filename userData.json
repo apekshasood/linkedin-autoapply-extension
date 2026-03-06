@@ -1,0 +1,38 @@
+{
+  "name": "Apeksha Sood",
+  "firstName": "Apeksha",
+  "lastName": "Sood",
+  "email": "apekshasood03@gmail.com",
+  "phone": "7895629961",
+  "city": "Pune",
+  "country": "India",
+
+  "experience": {
+    "react": "5",
+    "javascript": "5",
+    "frontend": "5"
+  },
+
+  "currentCompany": "Saksoft Pvt Ltd",
+  "currentTitle": "Frontend Developer",
+  "totalExperience": "5.6",
+
+  "noticePeriod": "30 days",
+
+  "workAuthorization": "Yes",
+
+  "visaSponsorship": "No",
+
+  "expectedSalary": "210000",
+
+  "linkedin": "https://www.linkedin.com/in/apeksha-sood/",
+
+  "portfolio": "https://www.apekshasood.in/",
+
+  "resumePath": "Apeksha_Sood_resume.pdf",
+
+  "education": {
+    "degree": "B.Tech",
+    "field": "Computer Science"
+  }
+}

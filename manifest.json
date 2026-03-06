@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "LinkedIn Easy Apply Autofill",
+  "version": "1.0",
+  "permissions": ["storage", "activeTab", "scripting"],
+  "host_permissions": ["https://*.linkedin.com/*"],
+  "content_scripts": [
+    {
+      "matches": ["https://*.linkedin.com/jobs/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
